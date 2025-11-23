@@ -119,10 +119,15 @@ PORT=8080 pnpm run start:dev
 ### Books
 
 - `GET /books/all` - Get all books
+- `GET /books/:id` - Get a book by ID
 
-Example request:
+Example requests:
 ```bash
+# Get all books
 curl http://localhost:3000/books/all
+
+# Get a book by ID
+curl http://localhost:3000/books/1
 ```
 
 ## Project Structure
@@ -191,6 +196,21 @@ If you encounter module not found errors, try:
 ```bash
 pnpm install
 ```
+
+## CI/CD
+
+This project includes GitHub Actions workflow (`.github/workflows/ci.yml`) that automatically runs:
+
+- **Unit Tests** - Runs Jest unit tests on every push and pull request
+- **E2E Tests** - Runs end-to-end tests to verify API endpoints
+- **Lint Check** - Validates code style (allowed to fail)
+- **Build Check** - Ensures the project builds successfully
+
+The CI pipeline runs on:
+- Push to `main` or `develop` branches
+- Pull requests to `main` or `develop` branches
+
+To view the workflow status, check the **Actions** tab in your GitHub repository.
 
 ## Learn More
 
