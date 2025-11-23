@@ -10,4 +10,8 @@ export class BooksService {
   getAllBooks(): Book[] {
     return books;
   }
+
+  getBookById(id: number): Book | undefined {
+    return books.find(book => book.id === id)
+  }
 }
