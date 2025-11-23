@@ -23,39 +23,179 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A NestJS REST API built with TypeScript. This project demonstrates a simple books API using NestJS framework.
 
-## Project setup
+## Prerequisites
 
-```bash
-$ pnpm install
-```
+Before you begin, ensure you have the following installed on your system:
 
-## Compile and run the project
+- **Node.js** (v18 or higher) - [Download](https://nodejs.org/)
+- **pnpm** (v8 or higher) - Install globally with `npm install -g pnpm`
+- **NestJS CLI** (optional, but recommended) - Install globally with `pnpm install -g @nestjs/cli`
 
-```bash
-# development
-$ pnpm run start
+## Installation
 
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Run tests
+### 1. Install NestJS CLI (if not already installed)
 
 ```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+pnpm install -g @nestjs/cli
 ```
+
+### 2. Clone and Install Dependencies
+
+```bash
+# Clone the repository (if applicable)
+# git clone <repository-url>
+# cd nest-api
+
+# Install project dependencies
+pnpm install
+```
+
+## Project Setup
+
+The project is already configured with:
+- TypeScript compilation
+- ESLint for code linting
+- Prettier for code formatting
+- Jest for testing
+
+## Running the Project
+
+### Development Mode
+
+Start the application in development mode with hot-reload:
+
+```bash
+pnpm run start:dev
+```
+
+The API will be available at `http://localhost:3000`
+
+### Production Mode
+
+First, build the project:
+
+```bash
+pnpm run build
+```
+
+Then start the production server:
+
+```bash
+pnpm run start:prod
+```
+
+### Debug Mode
+
+Start the application in debug mode:
+
+```bash
+pnpm run start:debug
+```
+
+### Standard Start
+
+Start the application without watch mode:
+
+```bash
+pnpm run start
+```
+
+## Environment Variables
+
+The application supports the following environment variable:
+
+- `PORT` - Server port (default: 3000)
+
+Example:
+
+```bash
+PORT=8080 pnpm run start:dev
+```
+
+## API Endpoints
+
+### Books
+
+- `GET /books/all` - Get all books
+
+Example request:
+```bash
+curl http://localhost:3000/books/all
+```
+
+## Project Structure
+
+```
+nest-api/
+├── src/
+│   ├── app.controller.ts    # Main controller
+│   ├── app.service.ts       # Main service
+│   ├── app.module.ts        # Root module
+│   ├── main.ts              # Application entry point
+│   └── FakeDatabase.ts      # Mock database
+├── test/                    # E2E tests
+├── dist/                    # Compiled output (generated)
+├── nest-cli.json            # NestJS CLI configuration
+├── tsconfig.json            # TypeScript configuration
+└── package.json             # Project dependencies
+```
+
+## Available Scripts
+
+### Development
+
+- `pnpm run start` - Start the application
+- `pnpm run start:dev` - Start in watch mode (development)
+- `pnpm run start:debug` - Start in debug mode
+- `pnpm run start:prod` - Start in production mode
+
+### Building
+
+- `pnpm run build` - Build the project for production
+
+### Code Quality
+
+- `pnpm run format` - Format code with Prettier
+- `pnpm run lint` - Lint code with ESLint
+
+### Testing
+
+- `pnpm run test` - Run unit tests
+- `pnpm run test:watch` - Run tests in watch mode
+- `pnpm run test:cov` - Run tests with coverage
+- `pnpm run test:debug` - Run tests in debug mode
+- `pnpm run test:e2e` - Run end-to-end tests
+
+## Troubleshooting
+
+### Port Already in Use
+
+If port 3000 is already in use, you can:
+
+1. Kill the process using port 3000:
+   ```bash
+   lsof -ti :3000 | xargs kill -9
+   ```
+
+2. Or use a different port:
+   ```bash
+   PORT=3001 pnpm run start:dev
+   ```
+
+### Module Not Found Errors
+
+If you encounter module not found errors, try:
+
+```bash
+pnpm install
+```
+
+## Learn More
+
+- [NestJS Documentation](https://docs.nestjs.com)
+- [NestJS CLI Documentation](https://docs.nestjs.com/cli/overview)
 
 ## Deployment
 
