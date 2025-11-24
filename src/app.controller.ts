@@ -14,7 +14,6 @@ export class BooksController {
   @Get('/:id')
   getBookById(@Param('id') id: string): Book | undefined {
     const bookID = parseInt(id);
-    return this.booksService.getBookById(bookID)
+    return this.booksService.getBookById(bookID);
   }
-  
 }

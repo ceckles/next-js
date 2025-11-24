@@ -1,22 +1,33 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { BooksController } from './app.controller';
+import { BooksService } from './app.service';
+import { books } from './FakeDatabase';
 
-describe('AppController', () => {
-  let appController: AppController;
+describe('BooksController', () => {
+  let booksController: BooksController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+      controllers: [BooksController],
+      providers: [BooksService],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    booksController = app.get<BooksController>(BooksController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('getAllBooks', () => {
+    it('should return all books', () => {
+      expect(booksController.getAllBooks()).toEqual(books);
+    });
+  });
+
+  describe('getBookById', () => {
+    it('should return a book by id', () => {
+      expect(booksController.getBookById('1')).toEqual(books[0]);
+    });
+
+    it('should return undefined for non-existent id', () => {
+      expect(booksController.getBookById('999')).toBeUndefined();
     });
   });
 });
